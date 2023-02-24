@@ -19,6 +19,7 @@ io.on("connection", (socket) => {
 // user define
 const settings = require("./config/properties.js");
 var indexRouter = require("./routes/index");
+var extensionRouter = require("./routes/extension");
 
 // using ejs engine
 app.set("view engine", "ejs");
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // routing
 app.use("/", indexRouter);
+app.use("/extension", extensionRouter);
 
 server.listen(settings.port, settings.hostname, () => {
   console.log(`Server is running at ${settings.hostname}:${settings.port}`);
